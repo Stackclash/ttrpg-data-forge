@@ -38,7 +38,7 @@ jobs:
           branch=$(echo '${{ needs.release-please.outputs.pr }}' | jq -r '.headBranchName')
           echo "branch_name=$branch" >> $GITHUB_OUTPUT
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ steps.branch.outputs.branch_name }}
           fetch-depth: 0
@@ -68,7 +68,7 @@ jobs:
         os: ['ubuntu-latest', 'macos-latest']
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -137,7 +137,7 @@ jobs:
     if: ${{ needs.release-please.outputs.release_created }}
     needs: release-please
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           
